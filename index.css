@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --heartColor: #ff7187;
+    --disableBg: #d1d6ee;
+}
+
+body {
+    /* height: 100vh; */
+    /* background-color: #252331; */
+    background-color: #1e1f29;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+label,
+label:before {
+    display: inline-block;
+    height: 400px;
+    width: 400px;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: top left, top right, bottom left, bottom right;
+    transition: all linear 0.45s;
+}
+
+label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-image: radial-gradient(circle at 75% 85.5%, var(--disableBg) 25%, transparent 25%),
+        radial-gradient(circle at 25% 85.5%, var(--disableBg) 25%, transparent 25%),
+        radial-gradient(circle at 108.8% -41%, var(--disableBg) 40%, transparent 40%),
+        radial-gradient(circle at -8.8% -41%, var(--disableBg) 40%, transparent 40%);
+}
+
+label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(circle at 75% 85.5%, var(--heartColor) 25%, transparent 25%),
+        radial-gradient(circle at 25% 85.5%, var(--heartColor) 25%, transparent 25%),
+        radial-gradient(circle at 108.8% -41%, var(--heartColor) 40%, transparent 40%),
+        radial-gradient(circle at -8.8% -41%, var(--heartColor) 40%, transparent 40%);
+    opacity: 0;
+}
+
+input:checked~label:before {
+    opacity: 1;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    height: 110px;
+    width: 110px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: heart-out 0.45s linear forwards;
+}
+
+@keyframes heart-out {
+    0% {
+        transform: translate(195px, 116px);
+    }
+
+    25% {
+        transform: translate(178px, 134px);
+    }
+
+    50% {
+        transform: translate(145px, 145px);
+    }
+
+    75% {
+        transform: translate(114px, 134px);
+    }
+
+    100% {
+        transform: translate(95px, 116px);
+    }
+}
+
+input:checked~label:after {
+    animation: heart-in 0.45s linear forwards;
+}
+
+@keyframes heart-in {
+    0% {
+        transform: translate(95px, 116px);
+    }
+
+    25% {
+        transform: translate(114px, 134px);
+    }
+
+    50% {
+        transform: translate(145px, 145px);
+    }
+
+    75% {
+        transform: translate(178px, 134px);
+    }
+
+    100% {
+        transform: translate(195px, 116px);
+    }
+}
+
+strong {
+    background-color: var(--heartColor);
+    padding: 0 5px;
+}
+
+.text-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: .4s all ease-in-out;
+}
+
+.text-div.active {
+    opacity: 1;
+    transition: .4s all ease-in-out;
+}
+
+.span {
+    color: #fff;
+}
